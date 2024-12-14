@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trocas de Contas - phcampp</title>
+    <style>
+        /* Estilo geral */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #ffcc33, #333399);
+            color: white;
+            text-align: center;
+        }
+
+        header {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #ffcc33;
+            text-shadow: 2px 2px 5px black;
+        }
+
+        p {
+            margin-top: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Catálogo de Contas */
+        #catalogo {
+            margin: 20px;
+        }
+
+        .catalogo-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 300px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .catalogo-item h3 {
+            font-size: 1.5rem;
+            color: #ffcc33;
+        }
+
+        .catalogo-item p {
+            font-size: 1rem;
+            margin: 10px 0;
+        }
+
+        /* Botões estilizados */
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: white;
+            background: #333399;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        button:hover {
+            background: #ffcc33;
+            color: black;
+            transform: scale(1.1);
+        }
+
+        /* Rodapé */
+        footer {
+            margin-top: 20px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+        }
+
+        footer a {
+            color: #ffcc33;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .marca-dagua {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Pop-up de carregamento */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Trocas de Contas - phcampp</h1>
+        <p>Bem-vindo ao meu site! Aqui você pode encontrar e realizar trocas de contas de maneira segura.</p>
+    </header>
+
+    <main>
+        <section id="catalogo">
+            <h2>Catálogo de Contas</h2>
+            <div class="catalogo-item">
+                <h3>Conta Média</h3>
+                <p>Bastantes itens disponíveis.</p>
+                <button onclick="redirecionarWhatsApp('media')">Selecionar</button>
+            </div>
+            <div class="catalogo-item">
+                <h3>Conta Nível Baixo</h3>
+                <p>Poucos itens disponíveis.</p>
+                <button onclick="redirecionarWhatsApp('baixo')">Selecionar</button>
+            </div>
+            <div class="catalogo-item">
+                <h3>Conta Ouro</h3>
+                <p>A melhor opção com mais itens!</p>
+                <button onclick="redirecionarWhatsApp('ouro')">Selecionar</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Canal no YouTube: <a href="https://www.youtube.com/@phcampp" target="_blank">phcampp</a></p>
+        <p class="marca-dagua">© phcampp - Todos os direitos reservados</p>
+    </footer>
+
+    <script>
+        function redirecionarWhatsApp(tipoConta) {
+            const numero = "+5511953069845";
+            const mensagem = `Olá, gostaria de mais informações sobre a conta ${tipoConta}.`;
+            const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+
+            // Pop-up de carregamento
+            const popup = document.createElement("div");
+            popup.className = "popup";
+            popup.innerText = "Carregando...";
+            document.body.appendChild(popup);
+
+            setTimeout(() => {
+                window.location.href = url;
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
